@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteCond %{galeria.php} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
