@@ -51,19 +51,19 @@
                 <div class="collapse navbar-collapse" id="mainmenu">
                     <ul class="navbar-nav ml-auto" style="font-size:16px;">
                         <li class="nav-item">
-                            <a class="nav-link" href="http://www.apartament-podhale.pl/#top">Home</a>
+                            <a class="nav-link" href="/#top">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://www.apartament-podhale.pl/#apartament">Apartament</a>
+                            <a class="nav-link" href="/#apartament">Apartament</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#galeria">Galeria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://www.apartament-podhale.pl/#cennik">Cennik</a>
+                            <a class="nav-link" href="/#cennik">Cennik</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://www.apartament-podhale.pl/#atrakcje">Atrakcje</a>
+                            <a class="nav-link" href="/#atrakcje">Atrakcje</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#kontakt">Kontakt</a>
@@ -93,11 +93,7 @@
                 Zapraszamy na wypoczynek bez zwierząt. Dostępna również altana z kominkiem.</p>
         </div>
         <div class="container d-flex flex-wrap" id="gallery" data-toggle="modal" data-target="#exampleModal">
-            <?php
-                for($i=1; $i <= 36; $i++){
-                    echo '<img src="img/gallery/' .$i. '.png" data-target="#carouselExample" data-slide-to="' . ($i-1) . '" alt="" class="w-100 col-md-4 mb-4 p-0 ml-auto mr-auto myImg" style="max-width: 350px; border-radius: 5px;"/>';
-                }
-            ?>
+
         </div>
         
         <div class="container ml-auto mr-auto pl-4 pr-4" style="height:500px;">
@@ -119,15 +115,10 @@
                     
                 <!-- Carousel markup: https://getbootstrap.com/docs/4.4/components/carousel/ -->
                 <div id="carouselExample" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
+                    <div id="carousel-inner"  class="carousel-inner">
                         <div class="carousel-item active">
                         <img class="d-block w-100" src="img/gallery-slider/1.png">
                         </div>
-                        <?php 
-                            for($i=2; $i <= 36; $i++){
-                                echo '<div class="carousel-item"><img class="d-block w-100" src="img/gallery-slider/'. $i .'.png"></div>';
-                            }
-                        ?>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -153,12 +144,22 @@
                 <h1 class="text-center col-sm-6 ml-auto mr-auto">KONTAKT</h1>
             </div>
             <p class="text-center col-sm-6 ml-auto mr-auto" style="margin-bottom: 40px;">Wypełnij formularz kontaktowy lub zadzwoń <strong>+48 600 441 542</strong>, w celu ustalenia terminu pobytu!</p>
-            <?php if ( $emailSent == 1 ) { ?>
-                <div class="alert alert-success" role="alert" style="text-align: center;">
+        <!-- FORM -->
+        <!-- FORM -->
+        <!-- FORM -->
+        <!-- FORM -->
+                <!-- <div class="alert alert-success" role="alert" style="text-align: center;">
                     <h3 class="alert-heading">Twoja wiadomość została wysłana</h3>
                     <p>Dziękujemy za zgłoszenie, postaramy się odpowiedzieć na zapytanie tak szybko, jak to możliwe!</p>
-                </div>
-            <?php } ?>  
+                </div> -->
+
+        <!-- FORM -->
+        <!-- FORM -->
+        <!-- FORM -->
+        <!-- FORM --> <!-- FORM -->
+        <!-- FORM -->
+        <!-- FORM -->
+        <!-- FORM -->
             <form class="container" method="post" action="#kontakt" >       
                 <div class="d-flex flex-row flex-wrap container justify-content-center">
                     <div class="form-group col-9 col-md-6">
@@ -222,9 +223,34 @@
         
         </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    
+  
+
+    <script>
+
+    function createElementFromHTML(htmlString) {
+    var div = document.createElement('div');
+    div.innerHTML = htmlString.trim();
+    return div.firstChild; 
+    }
+
+    const gallery = document.getElementById('gallery');
+    const carousel = document.getElementById('carousel-inner');
+
+    for(let i = 1; i <= 36; i++){
+        const imageSrc = `<img src="img/gallery/${i}.png" data-target="#carouselExample" data-slide-to="${i}" alt="" class="w-100 col-md-4 mb-4 p-0 ml-auto mr-auto myImg" style="max-width: 350px; border-radius: 5px;"/>`
+        const carouselSrc = `<div class="carousel-item"><img class="d-block w-100" src="img/gallery-slider/${i}.png"></div>`
+        
+        const image = createElementFromHTML(imageSrc)
+        const carouselImage = createElementFromHTML(carouselSrc)
+
+        gallery.appendChild(image)
+        carousel.appendChild(carouselImage)
+    }
+
+
+    </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
     </body>
 </html>
